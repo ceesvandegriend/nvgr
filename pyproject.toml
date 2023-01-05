@@ -31,14 +31,14 @@ format = "python3 -m black nvgr/ tests/"
 lint = "python3 -m pylint --disable=C,R nvgr/ tests/"
 
 [tool.pytest.ini_options]
-minversion = "6.0"
 addopts = "--cov=nvgr"
-testpaths = [
-    "tests/",
-]
+python_classes = ["Test", ]
+python_functions = ["test_", ]
+python_files = ["test_*.py",]
+testpaths = [ "tests/", ]
 
 [tool.black]
-line-length = 88
+line-length = 119
 target-version = [
     "py37",
 ]
