@@ -1,2 +1,1 @@
-# nvgr
-nvgr / navigare - Nautical calculations
+# nvgr / navigare - Nautical calculations
