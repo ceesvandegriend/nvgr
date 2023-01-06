@@ -19,22 +19,22 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
+      - name: Install
         run: |
-          pdm sync -d
+          make install
           
-      - name: Run Tests
+      - name: Test
         run: |
-          pdm test
+          make test
           
-      - name: Run Lint
+      - name: Lint
         run: |
-          pdm lint
+          make lint
           
-      - name: Run Format
+      - name: Format
         run: |
-          pdm format
+          make format
           
-      - name: Run Build
+      - name: Build
         run: |
-          pdm build
+          make build

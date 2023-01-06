@@ -1,6 +1,6 @@
 [project]
 name = "nvgr"
-dynamic = ["version"]
+version = "0.2.2"
 description = "Navigare - Nautical calculations"
 authors = [
     { name = "Cees van de Griend", email = "cees@griend.eu" },
@@ -12,7 +12,7 @@ requires-python = ">=3.9"
 readme = "README.md"
 
 [project.license]
-text = "GPL-3.0-or-later"
+text = "GPL-3.0"
 
 [tool.pdm.dev-dependencies]
 dev = [
@@ -20,10 +20,6 @@ dev = [
     "pytest-cov>=4.0.0",
     "black>=22.12.0",
 ]
-
-[tool.pdm.version]
-source = "file"
-path = "nvgr/__init__.py"
 
 [tool.pdm.scripts]
 test = "python3 -m pytest"
