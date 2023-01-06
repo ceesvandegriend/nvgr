@@ -2,15 +2,21 @@ from nvgr import Longitude
 
 
 def test_init():
-    long = Longitude()
+    lng = Longitude(0.0)
 
-    assert long.degrees == 0.0
-    assert str(long) == "000.000°"
+    assert lng.degrees == 0.0
+    assert str(lng) == "000°00.0'E"
 
 
-def test_45():
-    long = Longitude()
-    long.degrees = 45.0
+def test_45E():
+    lng = Longitude(45.0)
 
-    assert long.degrees == 45.0
-    assert str(long) == "045.000°"
+    assert lng.degrees == 45.0
+    assert str(lng) == "045°00.0'E"
+
+
+def test_45W():
+    lng = Longitude(-45.0)
+
+    assert lng.degrees == -45.0
+    assert str(lng) == "045°00.0'W"
