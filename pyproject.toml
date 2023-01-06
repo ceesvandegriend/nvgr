@@ -1,6 +1,6 @@
 [project]
 name = "nvgr"
-version = "0.2.2"
+version = "0.1.2"
 description = "Navigare - Nautical calculations"
 authors = [
     { name = "Cees van de Griend", email = "cees@griend.eu" },
