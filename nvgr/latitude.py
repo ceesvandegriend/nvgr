@@ -8,6 +8,10 @@ class Latitude:
     def __init__(self, deg: float):
         self.degrees = deg
 
+    @property
+    def radians(self):
+        return math.radians(self.degrees)
+
     def __repr__(self):
         s = "N" if self.degrees >= 0.0 else "S"
         d = math.floor(abs(self.degrees))

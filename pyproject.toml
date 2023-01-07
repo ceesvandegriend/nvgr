@@ -1,12 +1,13 @@
 [project]
 name = "nvgr"
-version = "0.1.2"
+version = "0.1.3"
 description = "Navigare - Nautical calculations"
 authors = [
     { name = "Cees van de Griend", email = "cees@griend.eu" },
 ]
 dependencies = [
     "pylint>=2.15.9",
+    "numpy>=1.24.1",
 ]
 requires-python = ">=3.9"
 readme = "README.md"

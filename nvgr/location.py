@@ -4,7 +4,7 @@ from nvgr import Latitude, Longitude
 
 
 @dataclass
-class Position:
+class Location:
     def __init__(self, latitude: Latitude, longitude: Longitude):
         self.latitude = latitude
         self.longitude = longitude
