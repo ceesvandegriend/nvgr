@@ -1,4 +1,4 @@
-.PHONY: install test lint format build publish
+.PHONY: install test lint format build publish all
 
 install:
 	@echo "+++ Install +++"
@@ -24,3 +24,5 @@ build:
 publish:
 	@echo "+++ Upload +++"
 	pdm publish
+
+all: install test lint format build

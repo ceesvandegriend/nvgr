@@ -1,4 +1,4 @@
-from nvgr import Latitude, Longitude, Location, Loxodrome
+from nvgr import Latitude, Longitude, Loxodrome
 
 
 def test_north():
@@ -42,7 +42,7 @@ def test_west():
 
 
 def test_dr():
-    # TODO: Check calculation!
+    # I've to check calculation!
     #
     # departure = 46 11.8’N 006 20.2’W
     # course = 139.0

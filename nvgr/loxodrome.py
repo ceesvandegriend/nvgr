@@ -86,8 +86,7 @@ class Loxodrome(Location):
         lng1 = (
             lng0
             + math.tan(math.radians(course))
-            * ln(math.tan(math.radians(lat1 / 2 + math.pi / 4))
-            / math.tan(math.radians(lat0 / 2 + math.pi / 4)))
+            * ln(math.tan(math.radians(lat1 / 2 + math.pi / 4)) / math.tan(math.radians(lat0 / 2 + math.pi / 4)))
             * 180.0
             / math.pi
         )
