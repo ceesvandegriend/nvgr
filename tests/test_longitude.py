@@ -1,4 +1,5 @@
 import math
+import pytest
 
 from nvgr import Longitude
 
@@ -25,3 +26,56 @@ def test_45W():
     assert lng.degrees == -45.0
     assert lng.radians == -math.pi / 4
     assert str(lng) == "045°00.0'W"
+
+
+def test_181E():
+    with pytest.raises(ValueError):
+        Longitude(181.0)
+
+
+def test_set_181E():
+    with pytest.raises(ValueError):
+        lng = Longitude()
+        lng.degrees = 181.0
+
+
+def test_181W():
+    with pytest.raises(ValueError):
+        Longitude(-181.0)
+
+
+def test_set_91S():
+    with pytest.raises(ValueError):
+        lng = Longitude()
+        lng.degrees = -181.0
+
+
+def test_parse_error():
+    with pytest.raises(ValueError):
+        Longitude.parse("aap noot mies")
+
+
+def test_parse_45E():
+    lng = Longitude.parse("045°00.0'E")
+
+    assert lng.degrees == 45.0
+    assert lng.radians == math.pi / 4
+
+
+def test_parse_455E():
+    lng = Longitude.parse("045-30.0E")
+
+    assert lng.degrees == 45.5
+
+
+def test_parse_45W():
+    lng = Longitude.parse("045°00.0'W")
+
+    assert lng.degrees == -45.0
+    assert lng.radians == -math.pi / 4
+
+
+def test_rotterdam():
+    lng = Longitude.parse("004°28.8'E")
+
+    assert lng.degrees == pytest.approx(4.479305, 1 / 6000)
