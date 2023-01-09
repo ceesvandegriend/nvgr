@@ -1,6 +1,5 @@
 """Loxodrome claculations"""
 import math
-from numpy import log as ln
 
 from nvgr import Course, Distance, Latitude, Longitude, Location
 
@@ -85,7 +84,7 @@ class Loxodrome(Location):
         lat1 = lat0 + Latitude(math.cos(course.radians) * distance.degrees)
         lng1 = lng0 + Longitude(
             math.tan(course.radians)
-            * ln(math.tan(lat1.radians / 2 + math.pi / 4) / math.tan(lat0.radians / 2 + math.pi / 4))
+            * math.log(math.tan(lat1.radians / 2 + math.pi / 4) / math.tan(lat0.radians / 2 + math.pi / 4))
             * 180.0
             / math.pi
         )
