@@ -5,13 +5,13 @@ import math
 @dataclass
 class Course:
     """Course in degrees
-    
+
     Attributes
     ----------
     degrees : float
         the course in degrees: 0 <= degrees <= 360
 
-    radians: float (read only)
+    radians: float, readonly
         the course in radians: 0 <= radians <= 2 Pi
 
     __repr__ : str
@@ -31,7 +31,7 @@ class Course:
     @property
     def degrees(self):
         """Gets the course in degrees
-        
+
         Returns
         -------
         float
@@ -44,7 +44,7 @@ class Course:
         """Sets the course in degrees
 
         Parameters
-        ----------        
+        ----------
         deg : float
             Course in degrees
 
@@ -60,7 +60,7 @@ class Course:
     @property
     def radians(self):
         """Gets the course in radians
-        
+
         Returns
         -------
         float :
@@ -70,7 +70,7 @@ class Course:
 
     def __repr__(self):
         """Gets the course as a string
-        
+
         Returns
         -------
         str :
