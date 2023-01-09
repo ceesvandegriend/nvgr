@@ -4,17 +4,54 @@ import math
 
 @dataclass
 class Course:
-    """Course in degrees"""
+    """Course in degrees
+    
+    Attributes
+    ----------
+    degrees : float
+        the course in degrees: 0 <= degrees <= 360
+
+    radians: float (read only)
+        the course in radians: 0 <= radians <= 2 Pi
+
+    __repr__ : str
+        the course in degrees as a string
+    """
 
     def __init__(self, deg: float = 0.0):
+        """Create a new course
+
+        Parameters
+        ----------
+        deg : float, optional
+            Course in degrees, default: 0.0
+        """
         self.degrees = deg
 
     @property
     def degrees(self):
+        """Gets the course in degrees
+        
+        Returns
+        -------
+        float
+            Course in degrees: 0 <= degrees <= 360
+        """
         return self._degrees
 
     @degrees.setter
     def degrees(self, deg: float):
+        """Sets the course in degrees
+
+        Parameters
+        ----------        
+        deg : float
+            Course in degrees
+
+        Raises
+        ------
+            ValueError: when deg < 0 or deg > 360
+        """
         if deg >= 0 and deg <= 360:
             self._degrees = deg
         else:
@@ -22,8 +59,22 @@ class Course:
 
     @property
     def radians(self):
+        """Gets the course in radians
+        
+        Returns
+        -------
+        float :
+            the course in radians: 0 <= radians <= 2 Pi
+        """
         return math.radians(self._degrees)
 
     def __repr__(self):
+        """Gets the course as a string
+        
+        Returns
+        -------
+        str :
+            the course in degrees as string
+        """
         d = self._degrees
         return f"{d:05.1f}\u00b0"
