@@ -35,7 +35,6 @@ class Latitude:
         deg : float, optional
             the latitude in degrees, default: 0.0
         """
-
         self.degrees = deg
 
     @property
@@ -45,7 +44,7 @@ class Latitude:
         Returns
         -------
         float
-            the course in degrees: -90 <= degrees <= 90
+            the latitude in degrees: -90 <= degrees <= 90
         """
         return self._degrees
 
@@ -74,7 +73,7 @@ class Latitude:
         Returns
         -------
         float
-            the course in radians: -Pi/2 <= radians <= Pi/2
+            the latitude in radians: -Pi/2 <= radians <= Pi/2
         """
         return math.radians(self._degrees)
 
