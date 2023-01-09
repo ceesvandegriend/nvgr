@@ -6,6 +6,8 @@ from dataclasses import dataclass
 
 @dataclass
 class Latitude:
+    """Latitude in degrees N (positive) or S (negative)"""
+
     def __init__(self, deg: float = 0.0):
         self.degrees = deg
 
@@ -29,6 +31,12 @@ class Latitude:
         d = math.floor(abs(self._degrees))
         m = (abs(self._degrees) - d) * 60.0
         return f"{d:02.0f}\u00b0{m:04.1f}'{s}"
+
+    def __add__(self, other):
+        return Latitude(self.degrees + other.degrees)
+
+    def __sub__(self, other):
+        return Latitude(self.degrees - other.degrees)
 
     @classmethod
     def parse(cls, fmt: str) -> "Latitude":

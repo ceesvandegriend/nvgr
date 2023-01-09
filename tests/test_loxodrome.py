@@ -1,9 +1,9 @@
-from nvgr import Latitude, Longitude, Loxodrome
+from nvgr import Course, Distance, Latitude, Longitude, Loxodrome
 
 
 def test_north():
     departure = Loxodrome(Latitude(0.0), Longitude(0.0))
-    distance = 2700.0
+    distance = Distance(2700.0)
     arrival = departure.north(distance)
 
     assert arrival.latitude.degrees == 45.0
@@ -13,7 +13,7 @@ def test_north():
 
 def test_east():
     departure = Loxodrome(Latitude(0.0), Longitude(0.0))
-    distance = 2700.0
+    distance = Distance(2700.0)
     arrival = departure.east(distance)
 
     assert arrival.latitude.degrees == 0.0
@@ -23,7 +23,7 @@ def test_east():
 
 def test_south():
     departure = Loxodrome(Latitude(0.0), Longitude(0.0))
-    distance = 2700.0
+    distance = Distance(2700.0)
     arrival = departure.south(distance)
 
     assert arrival.latitude.degrees == -45.0
@@ -33,7 +33,7 @@ def test_south():
 
 def test_west():
     departure = Loxodrome(Latitude(0.0), Longitude(0.0))
-    distance = 2700.0
+    distance = Distance(2700.0)
     arrival = departure.west(distance)
 
     assert arrival.latitude.degrees == 0.0
@@ -50,6 +50,9 @@ def test_dr():
     lat0 = Latitude(46.19666666666666668)
     lng0 = Longitude(-6.33666666666666667)
     departure = Loxodrome(lat0, lng0)
-    arrival = departure.dr(139.0, 6.5)
+    course = Course(139.0)
+    distance = Distance(6.5)
 
-    assert str(arrival) == "46°06.9'N 006°14.4'W"
+    arrival = departure.dr(course, distance)
+
+    assert str(arrival) == "46°06.9'N 006°14.0'W"
