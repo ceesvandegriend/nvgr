@@ -20,9 +20,9 @@ class Distance:
     radians : float, readonly
         the distance in radians: radians >= 0
 
-    __repr__ : str
-        the distance in degrees as a string
-
+    Members
+    -------
+    __repr__() - the distance in degrees as a string
     """
 
     def __init__(self, nm: float = 0.0):

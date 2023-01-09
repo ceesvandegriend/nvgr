@@ -14,8 +14,9 @@ class Course:
     radians: float, readonly
         the course in radians: 0 <= radians <= 2 Pi
 
-    __repr__ : str
-        the course in degrees as a string
+    Members
+    -------
+    __repr__() - the course in degrees as a string
     """
 
     def __init__(self, deg: float = 0.0):
@@ -24,7 +25,7 @@ class Course:
         Parameters
         ----------
         deg : float, optional
-            Course in degrees, default: 0.0
+            the course in degrees, default: 0.0
         """
         self.degrees = deg
 
@@ -35,7 +36,7 @@ class Course:
         Returns
         -------
         float
-            Course in degrees: 0 <= degrees <= 360
+            the course in degrees: 0 <= degrees <= 360
         """
         return self._degrees
 
@@ -46,7 +47,7 @@ class Course:
         Parameters
         ----------
         deg : float
-            Course in degrees
+            the course in degrees
 
         Raises
         ------

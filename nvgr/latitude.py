@@ -6,17 +6,62 @@ from dataclasses import dataclass
 
 @dataclass
 class Latitude:
-    """Latitude in degrees N (positive) or S (negative)"""
+    """The latitude in degrees N (positive) or S (negative)
+
+    Attributes
+    ----------
+    degrees : float
+        the latitude in degrees: -90 <= degrees <= -90
+
+    radians : float, readonly
+        the latitude in radians: -Pi/2 <= radians <= Pi/2
+
+    Members
+    -------
+    __add__(other) - Add a latitude
+
+    __sub__(other) - Subtract a latitude
+
+    __repr__() - Returns the latitude as a string
+
+    parse(fmt: str) - Parse a string into a latitude
+    """
 
     def __init__(self, deg: float = 0.0):
+        """Create a new latitude
+
+        Parameters
+        ----------
+        deg : float, optional
+            the latitude in degrees, default: 0.0
+        """
+
         self.degrees = deg
 
     @property
     def degrees(self):
+        """Gets the latitude in degrees
+
+        Returns
+        -------
+        float
+            the course in degrees: -90 <= degrees <= 90
+        """
         return self._degrees
 
     @degrees.setter
     def degrees(self, deg: float):
+        """Sets the latitude in degrees
+
+        Parameters
+        ----------
+        deg : float
+            the latitude in degrees
+
+        Raises
+        ------
+            ValueError: when -90 < latitude < 90
+        """
         if deg >= -90 and deg <= 90:
             self._degrees = deg
         else:
@@ -24,28 +69,71 @@ class Latitude:
 
     @property
     def radians(self):
+        """Gets the latitude in radians
+
+        Returns
+        -------
+        float
+            the course in radians: -Pi/2 <= radians <= Pi/2
+        """
         return math.radians(self._degrees)
 
+    def __add__(self, other):
+        """Adds a latitude
+
+        Parameters
+        ----------
+        other : Latitude
+            the latitude to add
+
+        Returns
+        -------
+        Latitude
+            the new latitude
+        """
+        return Latitude(self.degrees + other.degrees)
+
+    def __sub__(self, other):
+        """Subtracts a latitude
+
+        Parameters
+        ----------
+        other : Latitude
+            the latitude to subtract
+
+        Returns
+        -------
+        Latitude
+            the new latitude
+        """
+        return Latitude(self.degrees - other.degrees)
+
     def __repr__(self):
+        """Returns the latitude as a string
+
+        Returns
+        -------
+            the latitude as a string
+        """
         s = "N" if self._degrees >= 0.0 else "S"
         d = math.floor(abs(self._degrees))
         m = (abs(self._degrees) - d) * 60.0
         return f"{d:02.0f}\u00b0{m:04.1f}'{s}"
 
-    def __add__(self, other):
-        return Latitude(self.degrees + other.degrees)
-
-    def __sub__(self, other):
-        return Latitude(self.degrees - other.degrees)
-
     @classmethod
     def parse(cls, fmt: str) -> "Latitude":
         """Parse a latitude in the format: 00-00.0N or 00-00.0S
 
-        retruns:
-          the Latitude
-        """
+        Parameters
+        ----------
+        fmt : str
+            the string to parse into a latitude
 
+        Returns
+        -------
+        Latitude :
+          the new latitude
+        """
         match = re.search("([0123456789]{2})(.+)([0123456789.]{4})(.*)([NnSs])", fmt)
 
         if match:
