@@ -79,3 +79,19 @@ def test_rotterdam():
     lng = Longitude.parse("004°28.8'E")
 
     assert lng.degrees == pytest.approx(4.479305, 1 / 6000)
+
+
+def test_add_170E():
+    lng0 = Longitude(170)
+    delta_lng = Longitude(20)
+    lng1 = lng0 + delta_lng
+
+    assert lng1.degrees == -170
+
+
+def test_add_165W():
+    lng0 = Longitude(-165)
+    delta_lng = Longitude(-20)
+    lng1 = lng0 + delta_lng
+
+    assert lng1.degrees == 175

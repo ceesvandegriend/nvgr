@@ -80,3 +80,19 @@ def test_rotterdam():
     lat = Latitude.parse("51°55.4'N")
 
     assert lat.degrees == pytest.approx(51.922743, 1 / 6000)
+
+
+def test_add_80N():
+    lat0 = Latitude(80)
+    delta_lat = Latitude(20)
+    lat1 = lat0 + delta_lat
+
+    assert lat1.degrees == 80
+
+
+def test_add_85S():
+    lat0 = Latitude(-85)
+    delta_lat = Latitude(-20)
+    lat1 = lat0 + delta_lat
+
+    assert lat1.degrees == -75

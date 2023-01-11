@@ -1,10 +1,8 @@
 import math
-import re
 
-from dataclasses import dataclass
+from nvgr.format import Formatter
 
 
-@dataclass
 class Longitude:
     """The longitude in degrees E (positive) or W (negative)
 
@@ -22,7 +20,7 @@ class Longitude:
 
     __sub__(other) - Subtract a longitude
 
-    __repr__() - Returns the longitude as a string
+    __str__() - Returns the longitude as a string
 
     parse(fmt: str) - Parse a string into a longitude
     """
@@ -90,7 +88,16 @@ class Longitude:
         Longitude
             the new longitude
         """
-        return Longitude(self.degrees + other.degrees)
+        lng0 = self.degrees
+        delta_lng = other.degrees
+        lng1 = lng0 + delta_lng
+
+        if lng1 > 180:
+            lng1 = lng1 - 360
+        elif lng1 < -180:
+            lng1 = lng1 + 360
+
+        return Longitude(lng1)
 
     def __sub__(self, other):
         """Subtracts a longitude
@@ -107,17 +114,14 @@ class Longitude:
         """
         return Longitude(self.degrees - other.degrees)
 
-    def __repr__(self):
+    def __str__(self):
         """Returns the longitude as a string
 
         Returns
         -------
             the longitude as a string
         """
-        s = "E" if self._degrees >= 0.0 else "W"
-        d = math.floor(abs(self._degrees))
-        m = (abs(self._degrees) - d) * 60.0
-        return f"{d:03.0f}\u00b0{m:04.1f}'{s}"
+        return Formatter.formatLongitude(self.degrees)
 
     @classmethod
     def parse(cls, fmt: str) -> "Longitude":
@@ -133,18 +137,4 @@ class Longitude:
         Longitude :
           the new longitude
         """
-        match = re.search("([0123456789]{3})(.+)([0123456789.]{4})(.*)([EeWw])", fmt)
-        if match:
-            d = float(match.group(1))
-            m = float(match.group(3))
-            s = match.group(5)
-        else:
-            raise ValueError(fmt)
-
-        if s in ["W", "w"]:
-            degrees = (d + m / 60) * -1
-        else:
-            degrees = d + m / 60
-
-        lng = Longitude(degrees)
-        return lng
+        return Longitude(Formatter.parseLongitude(fmt))

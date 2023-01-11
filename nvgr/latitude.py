@@ -1,10 +1,9 @@
 import math
-import re
-
-from dataclasses import dataclass
 
 
-@dataclass
+from nvgr.format import Formatter
+
+
 class Latitude:
     """The latitude in degrees N (positive) or S (negative)
 
@@ -22,7 +21,7 @@ class Latitude:
 
     __sub__(other) - Subtract a latitude
 
-    __repr__() - Returns the latitude as a string
+    __str__() - Returns the latitude as a string
 
     parse(fmt: str) - Parse a string into a latitude
     """
@@ -90,7 +89,16 @@ class Latitude:
         Latitude
             the new latitude
         """
-        return Latitude(self.degrees + other.degrees)
+        lat0 = self.degrees
+        delta_lat = other.degrees
+        lat1 = lat0 + delta_lat
+
+        if lat1 > 90:
+            lat1 = 180 - lat1
+        elif lat1 < -90:
+            lat1 = -180 - lat1
+
+        return Latitude(lat1)
 
     def __sub__(self, other):
         """Subtracts a latitude
@@ -107,17 +115,14 @@ class Latitude:
         """
         return Latitude(self.degrees - other.degrees)
 
-    def __repr__(self):
+    def __str__(self):
         """Returns the latitude as a string
 
         Returns
         -------
             the latitude as a string
         """
-        s = "N" if self._degrees >= 0.0 else "S"
-        d = math.floor(abs(self._degrees))
-        m = (abs(self._degrees) - d) * 60.0
-        return f"{d:02.0f}\u00b0{m:04.1f}'{s}"
+        return Formatter.formatLatitude(self.degrees)
 
     @classmethod
     def parse(cls, fmt: str) -> "Latitude":
@@ -133,19 +138,4 @@ class Latitude:
         Latitude :
           the new latitude
         """
-        match = re.search("([0123456789]{2})(.+)([0123456789.]{4})(.*)([NnSs])", fmt)
-
-        if match:
-            d = float(match.group(1))
-            m = float(match.group(3))
-            s = match.group(5)
-        else:
-            raise ValueError(fmt)
-
-        if s in ["S", "s"]:
-            degrees = (d + m / 60) * -1
-        else:
-            degrees = d + m / 60
-
-        lat = Latitude(degrees)
-        return lat
+        return Latitude(Formatter.parseLatitude(fmt))

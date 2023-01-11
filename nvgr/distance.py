@@ -1,8 +1,8 @@
-from dataclasses import dataclass
 import math
 
+from nvgr.format import Formatter
 
-@dataclass
+
 class Distance:
     """Distance in Nautical Miles
 
@@ -22,7 +22,7 @@ class Distance:
 
     Members
     -------
-    __repr__() - the distance in degrees as a string
+    __str__() - the distance in degrees as a string
     """
 
     def __init__(self, nm: float = 0.0):
@@ -105,7 +105,7 @@ class Distance:
         """
         return math.radians(self._nautical_miles / 60)
 
-    def __repr__(self):
+    def __str__(self):
         """Gets the distance as a string
 
         Returns
@@ -113,5 +113,4 @@ class Distance:
         str :
             the distance in Naitical Miles as string
         """
-        nm = self._nautical_miles
-        return f"{nm:0.1f}NM"
+        return Formatter.formatDistance(self.degrees)

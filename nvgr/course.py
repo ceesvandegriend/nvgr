@@ -1,8 +1,8 @@
-from dataclasses import dataclass
 import math
 
+from nvgr.format import Formatter
 
-@dataclass
+
 class Course:
     """Course in degrees
 
@@ -16,7 +16,7 @@ class Course:
 
     Members
     -------
-    __repr__() - the course in degrees as a string
+    __str__() - the course in degrees as a string
     """
 
     def __init__(self, deg: float = 0.0):
@@ -69,7 +69,7 @@ class Course:
         """
         return math.radians(self._degrees)
 
-    def __repr__(self):
+    def __str__(self):
         """Gets the course as a string
 
         Returns
@@ -77,5 +77,4 @@ class Course:
         str :
             the course in degrees as string
         """
-        d = self._degrees
-        return f"{d:05.1f}\u00b0"
+        return Formatter.formatCourse(self.degrees)

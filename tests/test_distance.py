@@ -11,7 +11,7 @@ def test_init():
     assert d.nautical_miles == 0.0
     assert d.degrees == 0.0
     assert d.radians == 0.0
-    assert str(d) == "0.0NM"
+    assert str(d) == "0.0'"
 
 
 def test_60NM():
@@ -20,7 +20,7 @@ def test_60NM():
     assert d.nautical_miles == 60.0
     assert d.degrees == 1.0
     assert d.radians == math.pi / 180
-    assert str(d) == "60.0NM"
+    assert str(d) == "60.0'"
 
 
 def test_120NMa():
@@ -29,7 +29,7 @@ def test_120NMa():
     assert d.nautical_miles == 120.0
     assert d.degrees == 2.0
     assert d.radians == math.pi * 2 / 180
-    assert str(d) == "120.0NM"
+    assert str(d) == "120.0'"
 
 
 def test_120NMb():
@@ -39,7 +39,7 @@ def test_120NMb():
     assert d.nautical_miles == 120.0
     assert d.degrees == 2.0
     assert d.radians == math.pi * 2 / 180
-    assert str(d) == "120.0NM"
+    assert str(d) == "120.0'"
 
 
 def test_120NMc():
@@ -49,7 +49,7 @@ def test_120NMc():
     assert d.nautical_miles == 120.0
     assert d.degrees == 2.0
     assert d.radians == math.pi * 2 / 180
-    assert str(d) == "120.0NM"
+    assert str(d) == "120.0'"
 
 
 def test_1NMa():

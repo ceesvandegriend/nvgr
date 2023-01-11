@@ -85,7 +85,7 @@ class Loxodrome(Location):
         lng1 = lng0 + Longitude(
             math.tan(course.radians)
             * math.log(math.tan((lat1.radians / 2) + (math.pi / 4)) / math.tan((lat0.radians / 2) + (math.pi / 4)))
-            * 180.0
+            * 180
             / math.pi
         )
         arrival = Location(lat1, lng1)
