@@ -1,6 +1,6 @@
 import math
 
-from nvgr.format import Formatter
+from nvgr import formatter
 
 
 class Course:
@@ -77,4 +77,4 @@ class Course:
         str :
             the course in degrees as string
         """
-        return Formatter.formatCourse(self.degrees)
+        return formatter.formatCourse(self.degrees)

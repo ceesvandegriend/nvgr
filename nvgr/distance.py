@@ -1,6 +1,6 @@
 import math
 
-from nvgr.format import Formatter
+from nvgr import formatter
 
 
 class Distance:
@@ -113,4 +113,4 @@ class Distance:
         str :
             the distance in Naitical Miles as string
         """
-        return Formatter.formatDistance(self.degrees)
+        return formatter.formatDistance(self.degrees)

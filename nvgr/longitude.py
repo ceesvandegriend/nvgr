@@ -1,6 +1,6 @@
 import math
 
-from nvgr.format import Formatter
+from nvgr import formatter
 
 
 class Longitude:
@@ -121,7 +121,7 @@ class Longitude:
         -------
             the longitude as a string
         """
-        return Formatter.formatLongitude(self.degrees)
+        return formatter.formatLongitude(self.degrees)
 
     @classmethod
     def parse(cls, fmt: str) -> "Longitude":
@@ -137,4 +137,4 @@ class Longitude:
         Longitude :
           the new longitude
         """
-        return Longitude(Formatter.parseLongitude(fmt))
+        return Longitude(formatter.parseLongitude(fmt))

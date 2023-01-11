@@ -1,7 +1,7 @@
 import math
 
 
-from nvgr.format import Formatter
+from nvgr import formatter
 
 
 class Latitude:
@@ -122,7 +122,7 @@ class Latitude:
         -------
             the latitude as a string
         """
-        return Formatter.formatLatitude(self.degrees)
+        return formatter.formatLatitude(self.degrees)
 
     @classmethod
     def parse(cls, fmt: str) -> "Latitude":
@@ -138,4 +138,4 @@ class Latitude:
         Latitude :
           the new latitude
         """
-        return Latitude(Formatter.parseLatitude(fmt))
+        return Latitude(formatter.parseLatitude(fmt))
