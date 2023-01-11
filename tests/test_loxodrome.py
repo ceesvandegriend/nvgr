@@ -1,10 +1,11 @@
-from nvgr import Course, Distance, Latitude, Longitude, Loxodrome
+from nvgr import Latitude, Longitude, Position
+
+from nvgr.loxodrome import north, east, south, west, dr
 
 
 def test_north():
-    departure = Loxodrome(Latitude(0.0), Longitude(0.0))
-    distance = Distance(2700.0)
-    arrival = departure.north(distance)
+    departure = Position.parse("00-00.0N 000-00.0W")
+    arrival = north(departure, 2700.0)
 
     assert arrival.latitude.degrees == 45.0
     assert arrival.longitude.degrees == 0.0
@@ -12,9 +13,8 @@ def test_north():
 
 
 def test_east():
-    departure = Loxodrome(Latitude(0.0), Longitude(0.0))
-    distance = Distance(2700.0)
-    arrival = departure.east(distance)
+    departure = Position.parse("00-00.0N 000-00.0W")
+    arrival = east(departure, 2700.0)
 
     assert arrival.latitude.degrees == 0.0
     assert arrival.longitude.degrees == 45.0
@@ -22,9 +22,8 @@ def test_east():
 
 
 def test_south():
-    departure = Loxodrome(Latitude(0.0), Longitude(0.0))
-    distance = Distance(2700.0)
-    arrival = departure.south(distance)
+    departure = Position.parse("00-00.0N 000-00.0W")
+    arrival = south(departure, 2700.0)
 
     assert arrival.latitude.degrees == -45.0
     assert arrival.longitude.degrees == 0.0
@@ -32,9 +31,8 @@ def test_south():
 
 
 def test_west():
-    departure = Loxodrome(Latitude(0.0), Longitude(0.0))
-    distance = Distance(2700.0)
-    arrival = departure.west(distance)
+    departure = Position.parse("00-00.0N 000-00.0W")
+    arrival = west(departure, 2700.0)
 
     assert arrival.latitude.degrees == 0.0
     assert arrival.longitude.degrees == -45.0
@@ -49,10 +47,7 @@ def test_dr():
     # distance = 6.5 NM
     lat0 = Latitude(46.19666666666666668)
     lng0 = Longitude(-6.33666666666666667)
-    departure = Loxodrome(lat0, lng0)
-    course = Course(139.0)
-    distance = Distance(6.5)
-
-    arrival = departure.dr(course, distance)
+    departure = Position(lat0, lng0)
+    arrival = dr(departure, 139.0, 6.5)
 
     assert str(arrival) == "46°06.9'N 006°14.0'W"
