@@ -6,13 +6,12 @@ from nvgr import formatter
 class Course:
     """Course in degrees
 
-    Attributes
-    ----------
-    degrees : float
-        the course in degrees: 0 <= degrees <= 360
+    :attr degrees: the course in degrees: 0 <= degrees <= 360
+    :type float:
 
-    radians: float, readonly
-        the course in radians: 0 <= radians <= 2 Pi
+    :attr radians: readonly, the course in radians: 0 <= radians <= 2 Pi
+    :type float: 
+        
 
     Members
     -------

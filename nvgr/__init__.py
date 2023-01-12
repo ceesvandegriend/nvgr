@@ -7,6 +7,8 @@ from nvgr.longitude import Longitude
 
 from nvgr.position import Position
 
+from nvgr.loxodrome import north, east, south, west, dr
+
 __all__ = [
     "Course",
     "Distance",
@@ -14,4 +16,5 @@ __all__ = [
     "Longitude",
     "formatter",
     "Position",
+    "north", "east", "south", "west", "dr",
 ]

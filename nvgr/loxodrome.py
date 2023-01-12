@@ -8,8 +8,14 @@ def north(departure: Position, distance: float) -> Position:
     """
     Calculate the arrival location when sailing a North course and given distance.
 
-    - distance: float
-        Distance in Nautical Miles
+    :param departure: Original position
+    :type Position:
+
+    :param distance: Distance in nautical miles
+    :type float:
+
+    :return: Calculated position
+    :rtype: Position
     """
     # units are degrees
     dist = Distance(distance)
@@ -26,8 +32,14 @@ def east(departure: Position, distance: Distance) -> Position:
     """
     Calculate the arrival location when sailing an East course and given distance.
 
-    - distance: float
-        Distance in Nautical Miles
+    :param departure: Original position
+    :type Position:
+
+    :param distance: Distance in nautical miles
+    :type float:
+
+    :return: Calculated position
+    :rtype: Position
     """
     # units are degrees
     dist = Distance(distance)
@@ -42,10 +54,16 @@ def east(departure: Position, distance: Distance) -> Position:
 
 def south(departure: Position, distance: float) -> Position:
     """
-    Calculate the arrival location when sailing a North course and given distance.
+    Calculate the arrival location when sailing a South course and given distance.
 
-    - distance: float
-        Distance in Nautical Miles
+    :param departure: Original position
+    :type Position:
+
+    :param distance: Distance in nautical miles
+    :type float:
+
+    :return: Calculated position
+    :rtype: Position
     """
     # units are degrees
     dist = Distance(distance)
@@ -62,8 +80,14 @@ def west(departure: Position, distance: Distance) -> Position:
     """
     Calculate the arrival location when sailing an West course and given distance.
 
-    - distance: float
-        Distance in Nautical Miles
+    :param departure: Original position
+    :type Position:
+
+    :param distance: Distance in nautical miles
+    :type float:
+
+    :return: Calculated position
+    :rtype: Position
     """
     # units are degrees
     dist = Distance(distance)
@@ -80,10 +104,17 @@ def dr(departure: Position, course: Course, distance: Distance) -> Position:
     """
     Dead Reckoning: calculate the arrival location for a given course and distance.
 
-    - course: float
-      Course in degrees
-    - distance: float
-        Distance in Nautical Miles
+    :param departure: Original position
+    :type Position:
+
+    :param course: Course in degrees
+    :type float:
+
+    :param distance: Distance in nautical miles
+    :type float:
+
+    :return: Calculated position
+    :rtype: Position
     """
     # units are degrees
     crs = Course(course)
