@@ -16,7 +16,7 @@ sys.path.append(base_dir)
 project = 'nvgr'
 copyright = '2023, Cees van de Griend'
 author = 'Cees van de Griend'
-release = '0.1.5'
+release = '0.1.6'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

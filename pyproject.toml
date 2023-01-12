@@ -1,6 +1,6 @@
 [project]
 name = "nvgr"
-version = "0.1.5"
+version = "0.1.6"
 description = "Navigare - Nautical calculations"
 authors = [
     { name = "Cees van de Griend", email = "cees@griend.eu" },
@@ -10,8 +10,22 @@ dependencies = [
 requires-python = ">=3.9"
 readme = "README.md"
 
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+
 [project.license]
 text = "GPL-3.0"
+
+[project.urls]
+Documentation = "https://nvgr.readthedocs.io/"
+Source = "https://github.com/ceesvandegriend/nvgr"
 
 [tool.pdm.dev-dependencies]
 dev = [
