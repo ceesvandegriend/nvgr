@@ -10,8 +10,8 @@ class Course:
     :type float:
 
     :attr radians: readonly, the course in radians: 0 <= radians <= 2 Pi
-    :type float: 
-        
+    :type float:
+
 
     Members
     -------
